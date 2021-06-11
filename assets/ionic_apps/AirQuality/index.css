@@ -1,0 +1,17 @@
+body {
+    background: #ffeb3b14;
+}
+
+.logo {
+    width: 250px;
+    height: 250px;
+    background: transparent;
+    border-radius: 50%;
+}
+
+.app {
+    margin-top: 100px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}

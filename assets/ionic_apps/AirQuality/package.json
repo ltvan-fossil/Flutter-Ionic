@@ -1,0 +1,12 @@
+{
+    "name": "Air Quality",
+    "description": "Show how polluted the air currently is or how polluted it is forecast to become",
+    "author": "Uy Nguyen",
+    "version": "1.0",
+    "entry": "index",
+    "id": "airQualityApp",
+    "dependencies": {},
+    "permissions": [
+
+    ]
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <title>Hello World</title>
+        
+    </head>
+    <body>
+        <div class="app">
+            <img src="logo.png" alt="Logo" class="img-thumbnail logo">
+            <h1>Air Quality Companion</h1>
+            
+            <div id="aqiCard" class="card" style="display: -webkit-inline-box; text-align: center;">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h5 id="aqiValue" class="card-title" style="font-size: 80px; color: white;">-</h5>
+                  <p id="aqiStatus" class="card-text" style="color: white;">--</p>
+                  <a href="https://aqicn.org/api/" class="btn btn-primary">AQI API</a>
+                </div>
+              </div>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.get('http://api.waqi.info/feed/here/?token=ca00bad4d1f807b0d1445c85561fe0282ffa9e71', function(data){
+                var status = data.status;
+                var aqi = data.data.aqi;
+                $('#aqiValue').text(aqi)
+                $('#aqiStatus').text(status)
+
+                if (status == "ok") {
+                    $('#aqiCard').css('background-color', '#5fc763fa')
+                } else {
+                    $('#aqiCard').css('background-color', 'red')
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function recieveEvent(event) {
+            console.log('did recieve event ' + event);
+            $('#eventStr').text(event)
+        }
+    </script>
+</html>

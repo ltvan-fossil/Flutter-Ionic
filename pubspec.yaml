@@ -24,10 +24,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-
+  flutter_inappwebview: ^5.3.2
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  url_launcher: ^6.0.6
 
 dev_dependencies:
   flutter_test:
@@ -38,11 +39,19 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/ionic_apps/
+    - assets/ionic_apps/AirQuality/
+    - assets/ionic_apps/Encryptor/
+    - assets/ionic_apps/Encryptor/assets/
+    - assets/ionic_apps/Encryptor/assets/icon/
+    - assets/ionic_apps/Encryptor/static/
+    - assets/ionic_apps/Encryptor/static/css/
+    - assets/ionic_apps/Encryptor/static/js/
+  
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
