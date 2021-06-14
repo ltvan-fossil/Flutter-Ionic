@@ -34,6 +34,7 @@ class _IonicWebViewState extends State<IonicWebView> {
 
   late PullToRefreshController pullToRefreshController;
   String url = "";
+  String dataFromIonic = "Empty for now";
   double progress = 0;
   final urlController = TextEditingController();
 
@@ -59,10 +60,14 @@ class _IonicWebViewState extends State<IonicWebView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Official InAppWebView website")),
+      appBar: AppBar(title: Text("Ionic Web View")),
       body: SafeArea(
         child: Column(
           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text('This text is from Ionic: $dataFromIonic'),
+            ),
             Expanded(
               child: Stack(
                 children: [
@@ -91,8 +96,10 @@ class _IonicWebViewState extends State<IonicWebView> {
                         callback: (args) {
                           // the args contains the data sent from Ionic side, in this case, it should be the text inside the input field
                           print("Data from Ionic: " + args[0]);
-
-                          _buildAlertDialog(args[0]);
+                          setState(() {
+                            this.dataFromIonic = args[0];
+                            _buildAlertDialog(args[0]);
+                          });
                         },
                       );
                     },
