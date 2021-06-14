@@ -85,6 +85,16 @@ class _IonicWebViewState extends State<IonicWebView> {
                           };
                         },
                       );
+
+                      controller.addJavaScriptHandler(
+                        handlerName: 'FlutterIonicWithArgs',
+                        callback: (args) {
+                          // the args contains the data sent from Ionic side, in this case, it should be the text inside the input field
+                          print("Data from Ionic: " + args[0]);
+
+                          _buildAlertDialog(args[0]);
+                        },
+                      );
                     },
                     onLoadStart: (controller, url) {
                       setState(() {
@@ -184,6 +194,19 @@ class _IonicWebViewState extends State<IonicWebView> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildAlertDialog(String value) {
+    return AlertDialog(
+      title: Text('This is a Flutter AlertDialog'),
+      content: Text('Data from Ionic is $value'),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context, "OK"),
+          child: const Text('Cool!'),
+        )
+      ],
     );
   }
 }
