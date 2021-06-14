@@ -2,6 +2,7 @@
     package="com.example.flutter_ionic_implement">
    <application
         android:label="flutter_ionic_implement"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
