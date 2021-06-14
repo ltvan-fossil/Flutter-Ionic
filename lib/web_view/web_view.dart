@@ -63,18 +63,6 @@ class _IonicWebViewState extends State<IonicWebView> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            TextField(
-              decoration: InputDecoration(prefixIcon: Icon(Icons.search)),
-              controller: urlController,
-              keyboardType: TextInputType.url,
-              onSubmitted: (value) {
-                var url = Uri.parse(value);
-                if (url.scheme.isEmpty) {
-                  url = Uri.parse("https://www.google.com/search?q=" + value);
-                }
-                webViewController?.loadUrl(urlRequest: URLRequest(url: url));
-              },
-            ),
             Expanded(
               child: Stack(
                 children: [
@@ -82,12 +70,21 @@ class _IonicWebViewState extends State<IonicWebView> {
                     key: webViewKey,
                     initialUrlRequest: URLRequest(
                       url: Uri.parse(
-                          "http://localhost:8080/assets/ionic_apps/Encryptor/index.html"),
+                          'http://localhost:8080/assets/ionic_apps/${widget.title}/index.html'),
                     ),
                     initialOptions: options,
                     pullToRefreshController: pullToRefreshController,
                     onWebViewCreated: (controller) {
                       webViewController = controller;
+                      controller.addJavaScriptHandler(
+                        handlerName: 'FlutterIonic',
+                        callback: (args) {
+                          // Here, return statement will send this data to Javascript side as a JSON Object
+                          return {
+                            "title": "My name is Van",
+                          };
+                        },
+                      );
                     },
                     onLoadStart: (controller, url) {
                       setState(() {

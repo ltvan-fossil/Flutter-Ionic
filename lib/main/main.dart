@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:flutter_ionic_implement/web_view/web_view.dart';
+import '../web_view/web_view.dart';
 part 'main_action.dart';
 
 final InAppLocalhostServer localhostServer = new InAppLocalhostServer();
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       home: MyHomePage(
         title: 'Flutter Demo Home Page',
-        items: ['Air Quality', 'Encryptor'],
+        items: ['AirQuality', 'Encryptor'],
       ),
     );
   }
